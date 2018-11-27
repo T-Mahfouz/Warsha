@@ -316,7 +316,7 @@ class Controller extends BaseController
             'to' =>$tokens,
             'notification' => $data
         );
-        $fcmApiKey ='AAAAhuUat6Y:APA91bG0pSPiaXoOfGBPtF6vb5S1zoHIGJjY9eMi6dFGf_J3KdAaa_jnqvUL_A4n8vDajjiBfHYUN0yK_5N4h2Wqq7PStcJDcM6D_J4RTz-UqZQyCC5KOvdSQsV3Ae8wO7gjdCE8Glsr';
+        $fcmApiKey ='AAAA7YkvcUg:APA91bFAdlDeeVsi7MlS-VU50wAKZW0YpCb8HnU-9mlK4Dh3U_M1QBoxUQEMqhzQcgsrLF45c1wZL2-uZ-F25tDJJtwmkRV85ynfMh4VhSk2MwFHm9jTCkFN4J58d8sD-UkhtpLKoecC';
         $headers = array(
             'Authorization: key=' . $fcmApiKey,
             'Content-Type:application/json'
