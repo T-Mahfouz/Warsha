@@ -121,6 +121,26 @@ class CommonAuthController extends Controller
         $message = parent::messages('success_edit_profile');
         return $this->jsonResponse(200, $message, $user);
     }
+    public function orders(Request $request)
+    {
+        $user = Auth::user();
+        $orders = Order::where('status',0)->get();
+        if(count($orders)) {
+            foreach($orders as $order) {
+                $offers = $order->offers;
+                $owner = $order->user;
+                if(count($offers)) {
+                    foreach($offers as $offer) {
+                        $offer['workshop'] = $offer->workshop;
+                    }
+                }
+                $order['offers'] = $offers;
+                $order['user'] = $owner;
+            }
+        }
+        $message = parent::messages('success_process');
+        return parent::jsonResponse(200,$message,$orders);
+    }
     public function offers(Request $request)
     {
         $user = Auth::user();
@@ -152,7 +172,7 @@ class CommonAuthController extends Controller
         $order['order_services'] = $order->orderServices();
         unset($order['images']);
         unset($order['services']);
-        
+
         $offers = $order->offers;
         if(count($offers)) {
             foreach($offers as $offer) {
@@ -160,6 +180,7 @@ class CommonAuthController extends Controller
             }
         }
         $order['offers'] = $offers;
+        $order['user'] = $order->user;
 
         $message = parent::messages('success_process');
         return parent::jsonResponse(200,$message,$order);

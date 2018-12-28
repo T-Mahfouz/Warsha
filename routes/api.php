@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('refresh', 'Api\CommonAuthController@refresh');
     Route::post('editprofile', 'Api\CommonAuthController@editProfile');
     Route::get('logout','Api\CommonAuthController@logout');
+    Route::get('orders','Api\CommonAuthController@orders');
     Route::get('orderinfo','Api\CommonAuthController@orderInfo');
     Route::get('offers','Api\CommonAuthController@offers');
     Route::get('userinfo','Api\CommonAuthController@userInfo');
